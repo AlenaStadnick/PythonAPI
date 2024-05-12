@@ -1,20 +1,26 @@
 version: 2.1
 
-# Specify the path to the configuration file
-config:
-  path: .circleci/config-java.yml
-
 jobs:
   build:
     docker:
       - image: circleci/openjdk:11-jdk
 
-    working_directory: ~/repo
+    working_directory: ~/repo/Java-API
 
     steps:
       - checkout
 
-      # Your build steps here
+      - run:
+          name: Install Dependencies
+          command: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+      - run:
+          name: Run Tests
+          command: mvn failsafe:integration-test
+      - run:
+          name: GENERATE REPORT
+          command: mvn serenity:aggregate
+      # Add more steps as needed, such as deploying artifacts, etc.
 
 workflows:
   version: 2
