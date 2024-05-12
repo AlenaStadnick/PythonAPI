@@ -11,20 +11,16 @@ jobs:
       - checkout
 
       - run:
-          name: Install d
-          command: ls
-
-      - run:
           name: Install Dependencies
-          command: mvn install
+          command: mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
       - run:
-          name: Run Tests
+          name: Run Integration Tests
           command: mvn failsafe:integration-test
+
       - run:
-          name: GENERATE REPORT
+          name: Generate Reports
           command: mvn serenity:aggregate
-      # Add more steps as needed, such as deploying artifacts, etc.
 
 workflows:
   version: 2
