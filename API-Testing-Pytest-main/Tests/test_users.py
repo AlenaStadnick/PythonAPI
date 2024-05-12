@@ -16,3 +16,6 @@ def test_fetch_user() :
     responseJson = json.loads(response.text)
     print(responseJson)
     assert response.status_code == 200
+    id = response.json()['user']['id']
+    assert (id != 'undefined' )
+
