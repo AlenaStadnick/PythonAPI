@@ -16,7 +16,7 @@ jobs:
             echo "Current directory: $PWD"
       - run:
           name: Install ddd
-          command: ls
+          command: cd Java-API
       - run:
           name: Install Dependencies
           command: mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
