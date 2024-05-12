@@ -1,0 +1,23 @@
+version: 2.1
+
+# Specify the path to the configuration file
+config:
+  path: .circleci/config-java.yml
+
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:11-jdk
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Your build steps here
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build

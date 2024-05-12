@@ -1,8 +1,5 @@
 version: 2.1
 
-config:
-  path: .circleci/config-java.yml
-
 jobs:
   build:
     docker:
