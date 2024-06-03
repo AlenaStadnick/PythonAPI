@@ -16,7 +16,7 @@ public FoldersRestClient(){
     public Response createFolderFromFile(JSONObject body) {
 
         return RestAssured.given()
-                .header("Authorization",  dotenv.get("TOKEN"))
+                .header("Authorization",  dotenv.get("TOKEN",System.getenv("TOKEN"))
                 .contentType(ContentType.JSON)
                 .body(body.toString())
                 .post("/space/90151393719/folder");

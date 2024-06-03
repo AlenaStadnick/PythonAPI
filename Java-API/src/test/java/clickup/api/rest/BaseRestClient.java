@@ -7,7 +7,8 @@ public abstract class BaseRestClient {
     Dotenv dotenv = Dotenv.load();
 
     public void setUpRestAssured() {
-        Dotenv dotenv = Dotenv.load();
-        RestAssured.baseURI = dotenv.get("BASE_URL");
+    try{
+        Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
+        RestAssured.baseURI = dotenv.get("BASE_URL",System.getenv("BASE_URL"));
     };
 };
