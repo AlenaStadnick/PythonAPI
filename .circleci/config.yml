@@ -1,36 +1,39 @@
 version: 2.1
 
 jobs:
-  build:
+  java-job:
     docker:
       - image: circleci/openjdk:11-jdk
-
-    working_directory: ~/repo/Java-API
-
     steps:
       - checkout
-
-      - run:
-          name: go to
-          command: |
-            echo "Current directory: $PWD"
-      - run:
-          name: Install ddd
-          command: cd Java-API
       - run:
           name: Install Dependencies
-          command: mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-
+          command: cd Java-API && mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       - run:
-          name: Run Integration Tests
-          command: mvn failsafe:integration-test
-
+          name: Run Tests
+          command: cd Java-API && mvn failsafe:integration-test
       - run:
-          name: Generate Reports
-          command: mvn serenity:aggregate
+          name: GENERATE REPORT
+          command: cd Java-API && mvn serenity:aggregate
+
+
+  node-js-job:
+    docker:
+      - image: circleci/node:14
+    steps:
+      - checkout
+      - run: cd cypressApi && npm install && npm run build
+
+  python-job:
+    docker:
+      - image: circleci/python:3.9
+    steps:
+      - checkout
+      - run: cd Python-project && pip install -r requirements.txt && python tests.py
 
 workflows:
-  version: 2
-  build:
+  build-and-test:
     jobs:
-      - build
+      - java-job
+      - node-js-job
+      - python-job
