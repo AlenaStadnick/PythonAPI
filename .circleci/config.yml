@@ -10,9 +10,6 @@ jobs:
           name: Install Dependencies
           command: cd Java-API && mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       - run:
-          name: Copy .env File
-          command: cp .env Java-API/.env
-      - run:
           name: Run Tests
           command: cd Java-API && mvn failsafe:integration-test
       - run:
