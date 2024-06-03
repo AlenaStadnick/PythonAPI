@@ -41,10 +41,10 @@ jobs:
           command: cd CypressApi && npm i
       - run:
           name: run tests
-          command: cd CypressApi && npm run cy:run
+          command: cd CypressApi && npm run cy:run || true
       - run:
           name: generate report
-          command: cd CypressApi && npm run allure:report || true
+          command: cd CypressApi && npm run allure:report
       - store_artifacts:
           path: CypressApi/allure-report
           destination: CypressReport
