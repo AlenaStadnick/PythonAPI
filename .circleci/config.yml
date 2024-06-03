@@ -15,7 +15,9 @@ jobs:
       - run:
           name: GENERATE REPORT
           command: cd Java-API && mvn serenity:aggregate
-
+      - store_artifacts:
+          path: Java-API/target/site
+          destination: java-artifacts
 
   node-js-job:
     docker:
