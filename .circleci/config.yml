@@ -59,11 +59,10 @@ jobs:
           command: cd API-Testing-Pytest-main && pip install -r requirements.txt
       - run:
           name: run tests
-          command: cd API-Testing-Pytest-main && pytest Tests
-      - run:
-          name: generate report
-          command: cd API-Testing-Pytest-main && pytest --html=report.html --self-contained-html
-
+          command: cd API-Testing-Pytest-main && pytest Tests --html=report.html --self-contained-html
+      - store_artifacts:
+          path: API-Testing-Pytest-main/report.html
+          destination: python-report
 
 workflows:
   build-and-test:
