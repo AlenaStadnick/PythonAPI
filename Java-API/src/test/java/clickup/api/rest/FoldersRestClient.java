@@ -14,6 +14,7 @@ public FoldersRestClient(){
 }
 
     public Response createFolderFromFile(JSONObject body) {
+        body.put("name", "lala");
 
         return RestAssured.given()
                 .header("Authorization",  dotenv.get("TOKEN",System.getenv("TOKEN")))
