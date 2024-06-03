@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   java-job:
     docker:
-      - image: circleci/openjdk:11-jdk
+      - image: circleci/17.0.11
     steps:
       - checkout
       - run:
