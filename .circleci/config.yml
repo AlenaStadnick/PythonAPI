@@ -54,7 +54,16 @@ jobs:
       - image: circleci/python:3.9
     steps:
       - checkout
-      - run: cd Python-project && pip install -r requirements.txt && python tests.py
+      - run:
+          name: generate report
+          command: cd API-Testing-Pytest-main && pip install -r requirements.txt
+      - run:
+          name: run tests
+          command: cd API-Testing-Pytest-main && pytest Tests
+      - run:
+          name: generate report
+          command: cd API-Testing-Pytest-main && pytest --html=report.html --self-contained-html
+
 
 workflows:
   build-and-test:
