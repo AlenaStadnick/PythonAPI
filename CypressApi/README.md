@@ -1,4 +1,7 @@
 Cypress API
+if you open api-testing folder 
+run in terminal 
+'cd CypressApi'
 Install latest Node js
 and Install all dependencies: 
 
