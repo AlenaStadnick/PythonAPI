@@ -7,5 +7,5 @@ Feature: Authentication
     And Values 'user', 'username' in body are equal 'Yosyp Voloshchuk'
 
   Scenario: Create folder
-    When Create Folder
+    When Sent POST request to Create Folder from file 'folders/create_folder.json'
     Then Status code is equal 201
