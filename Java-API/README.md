@@ -28,6 +28,7 @@ mvn clean install
 
 ```shell
 mvn failsafe:integration-test
+mvn failsafe:integration-test -Dcucumber.filter.tags="@example"
 
 ```
 

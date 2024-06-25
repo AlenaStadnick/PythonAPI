@@ -28,6 +28,7 @@ public class AuthenticationSteps extends BaseSteps {
         System.out.println( body.toString());
         final Response createFolderResponse = foldersRestClient.createFolderFromFile(body);
         sharedTestData.setResponse(createFolderResponse);
+        System.out.println(createFolderResponse);
     }
 
     @And("Update folder with id {}")
