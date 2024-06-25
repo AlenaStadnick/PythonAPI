@@ -18,11 +18,6 @@ public class ResponseSteps extends BaseSteps {
         sharedTestData.setResponseBody(sharedTestData.getResponse().getBody().asPrettyString());
     }
 
-    @And("Response body the same as before")
-    public void checkResponseBodyTheSame() {
-        Assertions.assertThat(sharedTestData.getResponse().getBody().asPrettyString()).isEqualTo(sharedTestData.getResponseBody());
-    }
-
     @And("User store {} from body as {}")
     public void storeDataFromBody(String data, String variableName) {
         String value = sharedTestData.getResponse().jsonPath().get(data);

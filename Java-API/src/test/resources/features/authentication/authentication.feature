@@ -1,3 +1,4 @@
+@folders
 Feature: Authentication
 
   Scenario: Get user info
@@ -7,3 +8,9 @@ Feature: Authentication
   Scenario: Create folder
     When Create folder from file create_folders.json
     Then Response status should be 201
+
+    Scenario: Update folder
+      When Create folder from file create_folders.json
+      Then Response status should be 200
+      And User store "id" from body as "id"
+      And Update folder with id "id"

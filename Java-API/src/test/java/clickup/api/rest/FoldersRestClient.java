@@ -1,7 +1,6 @@
 package clickup.api.rest;
 
-import com.google.gson.JsonObject;
-import io.cucumber.java.en.And;
+import io.github.cdimascio.dotenv.Dotenv;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -14,13 +13,23 @@ public FoldersRestClient(){
 }
 
     public Response createFolderFromFile(JSONObject body) {
-        body.put("name", "lala");
+        System.out.println("Request Body: " + body.toString());
 
         return RestAssured.given()
-                .header("Authorization",  dotenv.get("TOKEN",System.getenv("TOKEN")))
+                .header("Authorization",  dotenv.get("TOKEN"))
                 .contentType(ContentType.JSON)
                 .body(body.toString())
                 .post("/space/90151393719/folder");
+    }
+
+    public Response updateFolderIdWithBody(String id, JSONObject body) {
+//        System.out.println("Request Body: " + body.toString());
+
+        return RestAssured.given()
+                .header("Authorization",  dotenv.get("TOKEN"))
+                .contentType(ContentType.JSON)
+                .body(body.toString()).log().body()
+                .put(String.format("/space/90151393719/folder/%s", id));
     }
 
 }
