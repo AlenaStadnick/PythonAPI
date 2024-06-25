@@ -15,9 +15,7 @@ public FoldersRestClient(){
     public Response createFolderFromFile(JSONObject body) {
         System.out.println("Request Body: " + body.toString());
 
-        return RestAssured.given()
-                .header("Authorization",  dotenv.get("TOKEN"))
-                .contentType(ContentType.JSON)
+        return requestSpec
                 .body(body.toString())
                 .post("/space/90151393719/folder");
     }
@@ -25,9 +23,7 @@ public FoldersRestClient(){
     public Response updateFolderIdWithBody(String id, JSONObject body) {
 //        System.out.println("Request Body: " + body.toString());
 
-        return RestAssured.given()
-                .header("Authorization",  dotenv.get("TOKEN"))
-                .contentType(ContentType.JSON)
+        return requestSpec
                 .body(body.toString()).log().body()
                 .put(String.format("/space/90151393719/folder/%s", id));
     }

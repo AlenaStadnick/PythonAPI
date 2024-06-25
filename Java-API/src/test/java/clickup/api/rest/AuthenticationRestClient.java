@@ -11,8 +11,7 @@ public class AuthenticationRestClient extends BaseRestClient {
     }
 
     public Response getUser() {
-        return RestAssured.given()
-                .header("Authorization",  dotenv.get("TOKEN"))
+        return requestSpec
                 .get("/user");
     }
 

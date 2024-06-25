@@ -20,7 +20,8 @@ To install dependency
 2) Install dependencies
 
 ```shell
-mvn install
+
+mvn clean install
 ```
 
 3) create .env file with next data:
