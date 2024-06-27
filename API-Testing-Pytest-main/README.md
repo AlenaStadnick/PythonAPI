@@ -6,6 +6,8 @@
 
 ## Getting started
 
+       
+* To download and install `pytest`, run this command from the terminal : `python3.9 -m venv venv`
 * To download and install `pytest`, run this command from the terminal : `pip install pytest`
 * To download and install `requests`, run this command from the terminal : `pip install requests`
 
@@ -23,7 +25,7 @@ def test_fetch_user() :
     path = "api/users/2"
     response = requests.get(url=baseUrl+path)
     responseJson = json.loads(response.text)
-    assert response.status_code == 200
+    assert respponse.status_code == 200
     assert jsonpath.jsonpath(responseJson,'$.data.first_name')[0] == 'Janet'
     assert jsonpath.jsonpath(responseJson,'$.data.id')[0] == 2
 
