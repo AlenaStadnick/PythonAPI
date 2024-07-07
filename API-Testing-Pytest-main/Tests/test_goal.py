@@ -14,7 +14,7 @@ load_dotenv()
 # Load base URL, team ID, and token from environment
 base_url = os.getenv('BASE_URL')
 team_id = os.getenv('TEAM_ID')
-token = os.getenv('TOKEN')
+token = os.getenv('API_TOKEN')
 
 # Initialize session with base URL and token
 session = Session(base_url=base_url, token=token)
