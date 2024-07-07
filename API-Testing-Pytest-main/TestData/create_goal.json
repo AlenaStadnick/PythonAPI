@@ -1,0 +1,9 @@
+{
+    "name": "My Test Goal Name NEW 1",
+    "due_date": 1568036964079,
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    "multiple_owners": true,
+    "owners": [183],
+    "color": "#32a852"
+}
+

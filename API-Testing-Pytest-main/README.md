@@ -1,39 +1,30 @@
-# Pytest - API testing with Python `requests`
+# Pytest - тестування API з використанням Python `requests`
 
-#### Pytest is a mature full-featured Python testing frame that helps you write and run tests in Python.
+#### Pytest - це зрілий і повнофункціональний фреймворк для написання та запуску тестів на Python.
 
-#### The `requests` module allows you to send HTTP requests using Python.
+#### Модуль `requests` дозволяє відправляти HTTP-запити за допомогою Python.
 
-## Getting started
+## Початок роботи
 
        
-* To download and install `pytest`, run this command from the terminal : `python3.9 -m venv venv`
-* To download and install `pytest`, run this command from the terminal : `pip install pytest`
-* To download and install `requests`, run this command from the terminal : `pip install requests`
+* Для завантаження та встановлення `pytest`, виконайте цю команду в терміналі: `python3.9 -m venv venv`
+* Для завантаження та встановлення `pytest`, виконайте цю команду в терміналі: `pip install pytest`
+* Для завантаження та встановлення `requests`, виконайте цю команду в терміналі: `pip install requests`
 
-To ensure all dependencies are resolved in a CI environment, in one go, add them to a `requirements.txt` file.
-* Then run the following command : `pip install -r requirements.txt`
+Щоб забезпечити вирішення всіх залежностей у CI-середовищі, додайте їх до файлу `requirements.txt`.
+* Потім виконайте наступну команду: `pip install -r requirements.txt`
 
-By default pytest only identifies the file names starting with `test_` or ending with `_test` as the test files.
+За замовчуванням pytest визначає файли тестів за іменами, що починаються на `test_` або закінчуються на `_test`.
 
-Pytest requires the test method names to start with `test`. All other method names will be ignored even if we explicitly ask to run those methods.
+Pytest вимагає, щоб назви методів тестів починалися з `test`. Усі інші назви методів будуть проігноровані, навіть якщо ми явно вказуємо на їх виконання.
 
-A sample test below :
+Приклад тесту:
 
 ```python
-def test_fetch_user() :
+def test_fetch_user():
     path = "api/users/2"
-    response = requests.get(url=baseUrl+path)
+    response = requests.get(url=baseUrl + path)
     responseJson = json.loads(response.text)
-    assert respponse.status_code == 200
-    assert jsonpath.jsonpath(responseJson,'$.data.first_name')[0] == 'Janet'
-    assert jsonpath.jsonpath(responseJson,'$.data.id')[0] == 2
-
-```
-## Running tests
-
-If your tests are contained inside a folder 'Tests', then run the following command : `pytest Tests` 
-
-To generate xml results, run the following command : `pytest Tests --junitxml="result.xml"`
-
- pytest --html=report.html --self-contained-html
+    assert response.status_code == 200
+    assert jsonpath.jsonpath(responseJson, '$.data.first_name')[0] == 'Janet'
+    assert jsonpath.jsonpath(responseJson, '$.data.id')[0] == 2
