@@ -1,0 +1,19 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: python:3.11  # Використовуємо Docker-контейнер з Python 3.11
+    steps:
+      - checkout  # Крок для витягування коду з репозиторію
+      - run:
+          name: Install dependencies
+          command: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt  # Встановлюємо необхідні залежності, включаючи pytest-html
+      - run:
+          name: Run API tests with HTML report
+          command: |
+            pytest Tests/test_goal.py --html=report.html --self-contained-html  # Запускаємо API тести з збереженням результатів у форматі HTML
+
+      # Інші кроки, які можливо колись додам :)
